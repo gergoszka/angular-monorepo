@@ -77,9 +77,7 @@ fs_1.default.readdir('/app/dist/apps/client', function (err, files) {
         console.log(file);
     });
 });
-if (process.env.NODE_ENV === 'production') {
-    app.use('/', express_1.default.static('../apps/client'));
-}
+app.use('/', express_1.default.static('../apps/client'));
 app.get('/api', (req, res) => {
     res.send({ message: 'Welcome to api!' });
 });
