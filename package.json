@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx build client && nx build api"
+    "build": "nx build client && nx build api",
+    "start": "node dist/api/main.js"
   },
   "private": true,
   "dependencies": {
