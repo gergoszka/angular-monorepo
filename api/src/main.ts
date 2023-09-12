@@ -5,10 +5,9 @@ import fs from 'fs';
 const app = express();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
-console.log(process.env.NODE_ENV);
-console.log(__dirname);
+console.log('/app/dist/apps/client');
 
-fs.readdir(__dirname, function (err, files) {
+fs.readdir('/app/dist/apps/client', function (err, files) {
   //handling error
   if (err) {
     return console.log('Unable to scan directory: ' + err);
@@ -21,8 +20,6 @@ fs.readdir(__dirname, function (err, files) {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  console.log('We are here');
-
   app.use('/', express.static('../apps/client'));
 }
 
