@@ -77,7 +77,10 @@ fs_1.default.readdir('/app/dist/apps/client', function (err, files) {
         console.log(file);
     });
 });
-app.use('/', express_1.default.static('../apps/client'));
+app.use(express_1.default.static('/app/dist/apps/client'));
+app.get('/', function (req, res) {
+    res.sendFile('index.html', { root: '../apps/client' });
+});
 app.get('/api', (req, res) => {
     res.send({ message: 'Welcome to api!' });
 });
