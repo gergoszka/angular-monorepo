@@ -19,7 +19,11 @@ fs.readdir('/app/dist/apps/client', function (err, files) {
   });
 });
 
-app.use('/', express.static('../apps/client'));
+app.use(express.static('/app/dist/apps/client'));
+
+app.get('/', function (req, res) {
+  res.sendFile('index.html', { root: '../apps/client' });
+});
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
