@@ -19,9 +19,7 @@ fs.readdir('/app/dist/apps/client', function (err, files) {
   });
 });
 
-if (process.env.NODE_ENV === 'production') {
-  app.use('/', express.static('../apps/client'));
-}
+app.use('/', express.static('../apps/client'));
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
