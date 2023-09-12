@@ -65,9 +65,8 @@ const path = tslib_1.__importStar(__webpack_require__(3));
 const fs_1 = tslib_1.__importDefault(__webpack_require__(4));
 const app = (0, express_1.default)();
 app.use('/assets', express_1.default.static(path.join(__dirname, 'assets')));
-console.log(process.env.NODE_ENV);
-console.log(__dirname);
-fs_1.default.readdir(__dirname, function (err, files) {
+console.log('/app/dist/apps/client');
+fs_1.default.readdir('/app/dist/apps/client', function (err, files) {
     //handling error
     if (err) {
         return console.log('Unable to scan directory: ' + err);
@@ -79,7 +78,6 @@ fs_1.default.readdir(__dirname, function (err, files) {
     });
 });
 if (process.env.NODE_ENV === 'production') {
-    console.log('We are here');
     app.use('/', express_1.default.static('../apps/client'));
 }
 app.get('/api', (req, res) => {
