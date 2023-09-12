@@ -24,4 +24,5 @@ jobs:
         env:
           REPO: self
           BRANCH: prod # The branch name where you want to push the assets
-          FOLDER: build # The directory where your assets are generated
+          FOLDER: dist # The directory where your assets are generated
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
