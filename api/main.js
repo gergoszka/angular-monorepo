@@ -19,6 +19,12 @@ module.exports = require("express");
 
 module.exports = require("path");
 
+/***/ }),
+/* 4 */
+/***/ ((module) => {
+
+module.exports = require("fs");
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -56,9 +62,24 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const tslib_1 = __webpack_require__(1);
 const express_1 = tslib_1.__importDefault(__webpack_require__(2));
 const path = tslib_1.__importStar(__webpack_require__(3));
+const fs_1 = tslib_1.__importDefault(__webpack_require__(4));
 const app = (0, express_1.default)();
 app.use('/assets', express_1.default.static(path.join(__dirname, 'assets')));
+console.log(process.env.NODE_ENV);
+console.log(__dirname);
+fs_1.default.readdir(__dirname, function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    }
+    //listing all files using forEach
+    files.forEach(function (file) {
+        // Do whatever you want to do with the file
+        console.log(file);
+    });
+});
 if (process.env.NODE_ENV === 'production') {
+    console.log('We are here');
     app.use('/', express_1.default.static('../apps/client'));
 }
 app.get('/api', (req, res) => {
